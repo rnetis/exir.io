@@ -1,6 +1,14 @@
 import requests
 
-token = raw_input("Enter your token access> ")
+try:
+	fi = open("token", "r")
+	token = fi.read()
+	fi.close()
+except IOError:
+	token = raw_input("Enter your token access> ")
+	fi = open("token", "w")
+	fi.write(token)
+	fi.close()
 re = requests.get("https://api.exir.tech/v0/user", headers = {"Authorization": "Bearer " +  token}).json()
 print("Hello" + re["full_name"].encode("utf-8"))
 
