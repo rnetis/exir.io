@@ -1,4 +1,5 @@
 import requests
+import exir
 
 try:
 	fi = open("token", "r")
@@ -17,6 +18,7 @@ print("1 - Get balance")
 print("2 - Get price")
 print("3 - place order")
 print("4 - Cancel order")
+print("5 - Trade book")
 x = raw_input("Enter would do you want> ")
 
 price = requests.get("https://api.exir.tech/v0/ticker?symbol=btc").json()["ticker"]
@@ -52,5 +54,7 @@ elif x == "4":
 			print("This object not complated!")
 		else:
 			print("This object not complated!")
+elif x == "5":
+	exir.tradebook()
 else:
 	print("Wrong number!")
